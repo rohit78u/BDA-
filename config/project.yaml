@@ -1,0 +1,72 @@
+project:
+  name: "Real-Time Urban Traffic Congestion Prediction"
+  version: "1.0.0"
+  description: "B.Tech Big Data Analytics semester project using METR-LA, Kafka, Spark Structured Streaming, Random Forest, and Streamlit."
+
+dataset:
+  name: "METR-LA"
+  source: "Caltrans Performance Measurement System (PeMS) via DCRNN benchmark"
+  license: "Public research benchmark / Open Caltrans data"
+  data_url: "https://raw.githubusercontent.com/leilin-research/GCGRNN/master/data/METR-LA_traffic_speed/metr-la.h5"
+  sensor_locations_url: "https://raw.githubusercontent.com/liyaguang/DCRNN/master/data/sensor_graph/graph_sensor_locations.csv"
+  raw_file: "data/raw/metr-la.h5"
+  locations_file: "data/raw/graph_sensor_locations.csv"
+  processed_features_file: "data/processed/traffic_features.parquet"
+  sample_features_file: "data/samples/sample_traffic_features.parquet"
+  sampling_interval_minutes: 5
+  forecast_horizon_minutes: 5
+  forecast_horizon_steps: 1
+  speed_unit: "mph"
+  chronological_split:
+    train_ratio: 0.70
+    val_ratio: 0.15
+    test_ratio: 0.15
+
+features:
+  lags: [1, 2, 3] # corresponding to 5 min, 10 min, 15 min lags
+  rolling_windows: [3, 12] # 3 steps = 15 min, 12 steps = 60 min
+  time_features: ["hour_of_day", "day_of_week", "is_weekend"]
+  target_column: "target_speed_next"
+
+congestion_thresholds:
+  free_flow_min_speed: 50.0  # Speed > 50 mph: LOW / Free Flow
+  moderate_min_speed: 35.0   # 35 < Speed <= 50 mph: MODERATE
+  high_min_speed: 20.0       # 20 < Speed <= 35 mph: HIGH
+  severe_max_speed: 20.0     # Speed <= 20 mph: SEVERE / Congested
+
+modeling:
+  model_type: "random_forest"
+  model_path: "models/random_forest_traffic.joblib"
+  metadata_path: "models/model_metadata.json"
+  evaluation_report_path: "outputs/reports/model_evaluation.json"
+  random_forest:
+    n_estimators: 100
+    max_depth: 14
+    min_samples_split: 10
+    min_samples_leaf: 4
+    n_jobs: -1
+    random_state: 42
+
+kafka:
+  bootstrap_servers: "localhost:9092"
+  raw_topic: "traffic.raw"
+  predictions_topic: "traffic.predictions"
+  consumer_group: "traffic-spark-consumer-group"
+  producer_client_id: "traffic-replay-producer"
+  auto_offset_reset: "latest"
+
+spark:
+  app_name: "UrbanTrafficCongestionStreaming"
+  master: "local[*]"
+  checkpoint_dir: "data/processed/checkpoints"
+  predictions_sink_dir: "data/processed/live_predictions"
+  kafka_package: "org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.1"
+  trigger_interval_seconds: 5
+  watermark_minutes: 10
+  window_duration_minutes: 15
+  slide_duration_minutes: 5
+
+dashboard:
+  port: 8501
+  refresh_interval_seconds: 3
+  max_table_rows: 50

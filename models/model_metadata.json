@@ -1,0 +1,55 @@
+{
+  "model_type": "RandomForestRegressor",
+  "created_at": "2026-10-22 11:35:06",
+  "training_samples": 599650,
+  "validation_samples": 128425,
+  "training_duration_seconds": 98.13,
+  "feature_names": [
+    "current_speed",
+    "speed_lag_1",
+    "speed_lag_2",
+    "speed_lag_3",
+    "speed_mean_15m",
+    "speed_mean_1h",
+    "hour_of_day",
+    "day_of_week",
+    "is_weekend",
+    "historical_mean_speed"
+  ],
+  "target_name": "target_speed_next",
+  "forecast_horizon_minutes": 5,
+  "hyperparameters": {
+    "n_estimators": 100,
+    "max_depth": 14,
+    "min_samples_split": 10,
+    "min_samples_leaf": 4,
+    "n_jobs": -1,
+    "random_state": 42
+  },
+  "validation_metrics": {
+    "baseline": {
+      "mae": 2.525,
+      "rmse": 4.239,
+      "mape_percent": 5.71,
+      "r2": 0.9034
+    },
+    "random_forest": {
+      "mae": 2.21,
+      "rmse": 3.77,
+      "mape_percent": 5.29,
+      "r2": 0.9236
+    }
+  },
+  "feature_importances": {
+    "current_speed": 0.8517,
+    "speed_lag_1": 0.0025,
+    "speed_lag_2": 0.002,
+    "speed_lag_3": 0.0024,
+    "speed_mean_15m": 0.1166,
+    "speed_mean_1h": 0.0076,
+    "hour_of_day": 0.0025,
+    "day_of_week": 0.0006,
+    "is_weekend": 0.0001,
+    "historical_mean_speed": 0.014
+  }
+}

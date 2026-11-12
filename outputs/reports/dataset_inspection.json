@@ -1,0 +1,40 @@
+{
+  "dataset_name": "METR-LA",
+  "source": "Caltrans Performance Measurement System (PeMS) via DCRNN benchmark",
+  "license": "Public research benchmark / Open Caltrans data",
+  "geographic_scope": "Los Angeles County freeway loop detectors (Caltrans PeMS)",
+  "file_path": "C:\\Users\\rohit\\.gemini\\antigravity\\scratch\\traffic-bda-project\\data\\raw\\metr-la.h5",
+  "file_size_bytes": 57038056,
+  "num_sensors": 207,
+  "num_timestamps": 34272,
+  "total_observations": 7094304,
+  "start_timestamp": "2012-03-01 00:00:00",
+  "end_timestamp": "2012-06-27 23:55:00",
+  "sampling_interval_minutes": 5,
+  "speed_unit": "mph",
+  "nan_count": 0,
+  "zero_count": 575302,
+  "zero_percentage": 8.11,
+  "speed_statistics_valid_mph": {
+    "min_all": 0.0,
+    "max_all": 70.0,
+    "mean_valid": 58.45972532036902,
+    "std_valid": 13.023601579104383,
+    "median_valid": 63.22222222222222,
+    "p25_valid": 57.125,
+    "p75_valid": 66.5
+  },
+  "sensor_ids_sample": [
+    "773869",
+    "767541",
+    "767542",
+    "717447",
+    "717446",
+    "717445",
+    "773062",
+    "767620",
+    "737529",
+    "717816"
+  ],
+  "coords_matched": 207
+}

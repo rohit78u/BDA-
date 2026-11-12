@@ -1,0 +1,27 @@
+# Python virtual environments & bytecode
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Large raw datasets (avoid committing large binary HDF5 files to Git)
+data/raw/*.h5
+data/raw/metr-la.h5
+
+# Spark streaming checkpoints and temporary outputs
+data/processed/checkpoints/
+data/processed/live_predictions/
+spark-warehouse/
+metastore_db/
+derby.log
+
+# IDE & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Environment secrets
+.env

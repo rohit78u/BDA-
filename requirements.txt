@@ -1,0 +1,28 @@
+# Core Big Data and Data Science Dependencies (Python 3.11 compatible)
+pyspark==3.5.1
+numpy>=1.26.4,<2.0.0
+pyarrow>=16.0.0,<18.0.0
+pandas>=2.2.2,<2.3.0
+scikit-learn>=1.4.2,<1.6.0
+joblib>=1.4.2
+
+# HDF5 dataset loaders
+tables>=3.9.2
+h5py>=3.11.0
+
+# Kafka event ingestion
+kafka-python-ng>=2.2.2
+
+# Configuration, schemas, and networking
+pyyaml>=6.0.1
+pydantic>=2.7.4
+requests>=2.32.3
+python-dotenv>=1.0.1
+
+# Interactive visualization & dashboard
+streamlit>=1.36.0
+plotly>=5.22.0
+
+# Testing & quality assurance
+pytest>=8.2.2
+streamlit-mermaid>=0.3.0

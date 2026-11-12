@@ -1,0 +1,129 @@
+{
+  "evaluation_dataset": "METR-LA Held-Out Chronological Test Split",
+  "test_period": {
+    "start": "2012-06-10T03:50:00",
+    "end": "2012-06-27T23:50:00",
+    "total_test_records": 128425
+  },
+  "metrics_summary": {
+    "baseline": {
+      "mae": 2.442,
+      "rmse": 4.144,
+      "mape_percent": 5.54,
+      "r2": 0.9055
+    },
+    "random_forest": {
+      "mae": 2.126,
+      "rmse": 3.673,
+      "mape_percent": 5.1,
+      "r2": 0.9258
+    },
+    "improvements": {
+      "mae_reduction_mph": 0.316,
+      "mae_reduction_percent": 12.94,
+      "rmse_reduction_mph": 0.471,
+      "rmse_reduction_percent": 11.37,
+      "r2_gain": 0.0203
+    }
+  },
+  "congestion_classification_metrics": {
+    "labels": [
+      "LOW",
+      "MODERATE",
+      "HIGH",
+      "SEVERE"
+    ],
+    "confusion_matrix": [
+      [
+        100425,
+        2095,
+        109,
+        6
+      ],
+      [
+        2682,
+        7536,
+        884,
+        21
+      ],
+      [
+        173,
+        1836,
+        7646,
+        499
+      ],
+      [
+        21,
+        62,
+        1106,
+        3324
+      ]
+    ],
+    "overall_accuracy": 0.9261,
+    "per_class_report": {
+      "LOW": {
+        "precision": 0.9721590304062884,
+        "recall": 0.9784673844205193,
+        "f1-score": 0.9753030067593815,
+        "support": 102635.0
+      },
+      "MODERATE": {
+        "precision": 0.653655997918293,
+        "recall": 0.6775150588869909,
+        "f1-score": 0.665371711107187,
+        "support": 11123.0
+      },
+      "HIGH": {
+        "precision": 0.7846074910210364,
+        "recall": 0.7530037423675399,
+        "f1-score": 0.7684808281823208,
+        "support": 10154.0
+      },
+      "SEVERE": {
+        "precision": 0.8633766233766234,
+        "recall": 0.7365388876578772,
+        "f1-score": 0.7949300490254694,
+        "support": 4513.0
+      },
+      "accuracy": 0.9260735838037765,
+      "macro avg": {
+        "precision": 0.8184497856805603,
+        "recall": 0.7863812683332319,
+        "f1-score": 0.8010213987685897,
+        "support": 128425.0
+      },
+      "weighted avg": {
+        "precision": 0.9259215956061583,
+        "recall": 0.9260735838037765,
+        "f1-score": 0.9257685597197555,
+        "support": 128425.0
+      }
+    }
+  },
+  "regime_error_breakdown": {
+    "LOW": {
+      "count": 102635,
+      "baseline_mae": 2.055,
+      "rf_mae": 1.691,
+      "rf_improvement_mph": 0.364
+    },
+    "MODERATE": {
+      "count": 11123,
+      "baseline_mae": 4.602,
+      "rf_mae": 4.117,
+      "rf_improvement_mph": 0.486
+    },
+    "HIGH": {
+      "count": 10154,
+      "baseline_mae": 3.541,
+      "rf_mae": 3.513,
+      "rf_improvement_mph": 0.028
+    },
+    "SEVERE": {
+      "count": 4513,
+      "baseline_mae": 3.45,
+      "rf_mae": 3.986,
+      "rf_improvement_mph": -0.535
+    }
+  }
+}
